@@ -2,8 +2,7 @@ USE ssr4g2_xx;
 -- 5
 CREATE TABLE Person
 (
-    person_id INT IDENTITY(1,1),
-    nric CHAR(9) UNIQUE,
+    person_id CHAR(9),
     sex VARCHAR(10) NOT NULL,
     birthday DATE NOT NULL,
     hometown VARCHAR(50) NOT NULL,
@@ -19,7 +18,7 @@ CREATE TABLE Person
 -- 10. ContactPerson
 CREATE TABLE ContactPerson
 (
-    person_id INT NOT NULL,
+    person_id CHAR(9) NOT NULL,
 
     PRIMARY KEY (person_id),
     FOREIGN KEY (person_id) REFERENCES Person(person_id) ON DELETE CASCADE ON UPDATE CASCADE
@@ -29,9 +28,10 @@ CREATE TABLE ContactPerson
 CREATE TABLE Company
 (
     company_id INT IDENTITY(1,1),
+    company_name VARCHAR(50) NOT NULL,
     company_email VARCHAR(30) NOT NULL,
     company_address VARCHAR(50) NOT NULL,
-    contact_person_id INT NOT NULL,
+    contact_person_id CHAR(9) NOT NULL,
 
     PRIMARY KEY (company_id),
     FOREIGN KEY (contact_person_id) REFERENCES ContactPerson(person_id)
@@ -55,13 +55,13 @@ CREATE TABLE Location
 CREATE TABLE Post
 (
     post_id INT IDENTITY(1,1),
-    person_id INT,
+    person_id CHAR(9),
     location_id INT,
     timestamp DATETIME,
     content VARCHAR(100) NOT NULL,
 
     PRIMARY KEY(post_id),
-    FOREIGN KEY (person_id) REFERENCES Person(person_id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (person_id) REFERENCES ContactPerson(person_id) ON DELETE SET NULL ON UPDATE CASCADE,
     FOREIGN KEY (location_id) REFERENCES Location(location_id) ON DELETE SET NULL ON UPDATE CASCADE
 );
 -- ALL good here 1159am 25 march
@@ -69,7 +69,7 @@ CREATE TABLE Post
 CREATE TABLE SwabTest
 (
     swab_test_id INT IDENTITY(1,1),
-    person_id INT,
+    person_id CHAR(9),
     location_id INT,
     timestamp DATETIME,
     test_result VARCHAR(10) NOT NULL,
@@ -84,7 +84,7 @@ CREATE TABLE SwabTest
 CREATE TABLE Comment
 (
     comment_id INT IDENTITY(1,1),
-    commentor_id INT,
+    commentor_id CHAR(9),
     post_id INT,
     comment VARCHAR(300) NOT NULL,
     comment_timestamp DATETIME NOT NULL,
@@ -106,7 +106,7 @@ CREATE TABLE Category
 -- 6
 CREATE TABLE SystemAdmin
 (
-    person_id INT,
+    person_id CHAR(9),
     PRIMARY KEY (person_id),
     FOREIGN KEY (person_id) REFERENCES Person(person_id) ON DELETE CASCADE ON UPDATE CASCADE
 )
@@ -114,9 +114,9 @@ CREATE TABLE SystemAdmin
 -- 9. Family
 CREATE TABLE Family
 (
-    person1_id INT,
-    person2_id INT,
-    Relation_type VARCHAR(20) NOT NULL,
+    person1_id CHAR(9),
+    person2_id CHAR(9),
+    relation_type VARCHAR(20) NOT NULL,
 
     PRIMARY KEY (person1_id, person2_id),
     FOREIGN KEY (person1_id) REFERENCES Person(person_ID),
@@ -128,7 +128,7 @@ CREATE TABLE Family
 CREATE TABLE CoordinateRec
 (
     rec_id INT IDENTITY(1,1),
-    person_id INT,
+    person_id CHAR(9),
     timestamp DATETIME NOT NULL,
     x_coordinates FLOAT NOT NULL,
     y_coordinates FLOAT NOT NULL,
@@ -153,7 +153,7 @@ CREATE TABLE PartOf
 CREATE TABLE TemperatureRec
 (
     rec_id INT IDENTITY(1,1),
-    person_id INT,
+    person_id CHAR(9),
     timestamp DATETIME NOT NULL,
     temperature FLOAT NOT NULL,
 
@@ -165,7 +165,7 @@ CREATE TABLE TemperatureRec
 CREATE TABLE CheckInOut
 (
     rec_id INT IDENTITY(1,1),
-    person_id INT,
+    person_id CHAR(9),
     location_id INT,
     checkin_time DATETIME NOT NULL,
     checkout_time DATETIME NOT NULL,
