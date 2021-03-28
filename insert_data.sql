@@ -491,8 +491,8 @@ VALUES
 
     -- 1st Jan 2021 (not infectious)
     ('S1234567A', CONVERT(datetime, '2021-01-01 16:00:00'), 13, 10),
-    ('S9804253I', CONVERT(datetime, '2021-01-01 16:00:00'), 13, 11),   
-    
+    ('S9804253I', CONVERT(datetime, '2021-01-01 16:00:00'), 13, 11),
+
 
     -- 16th Jan 2021
     ('S1234567A', CONVERT(datetime, '2021-01-16 13:00:00'), 10, 10),
