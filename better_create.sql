@@ -64,7 +64,7 @@ CREATE TABLE Post
     FOREIGN KEY (person_id) REFERENCES ContactPerson(person_id) ON DELETE SET NULL ON UPDATE CASCADE,
     FOREIGN KEY (location_id) REFERENCES Location(location_id) ON DELETE SET NULL ON UPDATE CASCADE
 );
--- ALL good here 1159am 25 march
+
 -- 1
 CREATE TABLE SwabTest
 (
