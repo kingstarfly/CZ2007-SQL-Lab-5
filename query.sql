@@ -8,12 +8,14 @@ Nearby areas are defined as having euclidean distance of <= 2.
  */
 SELECT 
 InfectedDetails.infected_person_id as infected_person_id,
+InfectedDetails.confirm_infection_timestamp as confirm_infection_timestamp,
 CoordinateRec.person_id as suspect_person_id, 
 CoordinateRec.timestamp AS time_of_contact
 
 FROM (
     SELECT 
     SwabTest.person_id AS infected_person_id, 
+    SwabTest.[timestamp] AS confirm_infection_timestamp,
     CoordinateRec.timestamp as contact_time,
     CoordinateRec.x_coordinates as x1,
     CoordinateRec.y_coordinates as y1
