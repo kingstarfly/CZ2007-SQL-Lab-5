@@ -220,6 +220,7 @@ VALUES
 
     -- day 1
     ('S9804253I', 1, CONVERT(datetime, '2021-03-23 12:00:00'), 'this place is great', CONVERT(datetime, '2021-03-23 12:00:01'), 5),
+    ('S1234567A', 1, CONVERT(datetime, '2021-03-23 12:00:00'), 'this place is great', CONVERT(datetime, '2021-03-23 12:00:01'), 5),
     ('S9804253I', 2, CONVERT(datetime, '2021-03-23 12:01:00'), 'this place is great', CONVERT(datetime, '2021-03-23 12:01:01'), 5),
     ('S9804253I', 3, CONVERT(datetime, '2021-03-23 12:02:00'), 'this place is great', CONVERT(datetime, '2021-03-23 12:02:01'), 5),
     ('S9804253I', 1, CONVERT(datetime, '2021-03-23 12:03:00'), 'this place is great', CONVERT(datetime, '2021-03-23 12:03:01'), 5),

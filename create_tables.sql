@@ -12,7 +12,6 @@ CREATE TABLE Person
     company_id INT,
 
     PRIMARY KEY (person_id)
-    -- FOREIGN KEY (company_id) REFERENCES Company(company_id) TODOOOOOO!!!
 );
 
 -- 10. ContactPerson
