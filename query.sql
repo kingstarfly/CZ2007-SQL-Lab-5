@@ -167,7 +167,7 @@ FROM (
       FROM CheckInOut, SwabTest
 
       WHERE 
-    SwabTest.person_id = CheckInOut.person_id AND
+            SwabTest.person_id = CheckInOut.person_id AND
             test_result = 'positive' AND
             DATEADD(DAY, -14, SwabTest.timestamp) < CheckInOut.checkin_time AND
             DATEADD(DAY, -14, SwabTest.timestamp) < CheckInOut.checkout_time AND SwabTest.timestamp > CheckInOut.checkin_time AND
